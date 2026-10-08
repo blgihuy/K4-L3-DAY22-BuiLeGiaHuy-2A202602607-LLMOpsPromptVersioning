@@ -46,6 +46,8 @@ def get_llm(provider: str = None, temperature: float = 0.0):
         return ChatOpenAI(**kwargs)
 
     elif provider == "gemini":
+        import warnings
+        warnings.filterwarnings("ignore", category=UserWarning)
         from langchain_google_genai import ChatGoogleGenerativeAI
         return ChatGoogleGenerativeAI(
             model=config.GEMINI_MODEL,
